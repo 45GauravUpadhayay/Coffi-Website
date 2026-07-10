@@ -1,822 +1,143 @@
-/*======================================================
-                GOOGLE FONT
-======================================================*/
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
-
-/*======================================================
-                    ROOT
-======================================================*/
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap");
 
 :root{
-    /* Colors */
-    --primary:#B88746;
-    --primary-light:#D8AE73;
-    --secondary:#2F2118;
-    --bg:#F8F5F1;
-    --white:#ffffff;
-    --black:#181818;
-    --text:#75685E;
-    --border:rgba(184,135,70,.12);
-    /* Glass */
-    --glass:rgba(255,255,255,.18);
-    --glass-border:rgba(255,255,255,.30);
-    /* Shadow */
-    --shadow-sm:0 8px 20px rgba(0,0,0,.06);
-    --shadow-md:0 18px 45px rgba(0,0,0,.10);
-    --shadow-lg:0 30px 70px rgba(0,0,0,.16);
-    /* Radius */
-    --radius-sm:12px;
-    --radius:20px;
-    --radius-lg:50px;
-    /* Transition */
-    --transition:.4s cubic-bezier(.4,0,.2,1);
+    --primary:#C88A4D;
+    --primary-light:#E4B06C;
+    --primary-dark:#8D5D2F;
+    --black:#0F0D0B;
+    --surface:#171411;
+    --surface-light:#231F1A;
+    --white:#FFFFFF;
+    --text:#E7E2DC;
+    --text-light:#A89F96;
+    --border:rgba(255,255,255,.08);
+    --glass:rgba(255,255,255,.05);
+    --transition:.35s ease;
 }
 
-/*======================================================
-                    RESET
-======================================================*/
-
-*,
-*::before,
-*::after{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html{
-    font-size:62.5%;
-    scroll-behavior:smooth;
+    font-size: 62.5%;
+    scroll-behavior: smooth;
 }
 
-body{
-    font-family:"Poppins",sans-serif;
-    font-size:1.6rem;
-    color:var(--black);
-    background:var(--bg);
-    line-height:1.7;
-    overflow-x:hidden;
+body {
+    font-family:"Outfit",sans-serif;
+    background: var(--black);
+    color: var(--text);
+    overflow-x: hidden;
+    font-size: 1.6rem;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    text-rendering:optimizeLegibility;
+    font-weight: 400;
+    line-height: 1.6;
 }
 
-/*======================================================
-                GLOBAL
-======================================================*/
+h1{
+    font-size:clamp(5.5rem,8vw,8rem);
+}
 
-img{
-    display:block;
-    max-width:100%;
+h2{
+    font-size:4.5rem;
+}
+
+h3{
+    font-size:3rem;
+}
+
+p{
+    font-size:1.7rem;
+    line-height:1.8;
+}
+
+img {
+    display: block;
+    max-width: 100%;
 }
 
 a{
-    text-decoration:none;
-    color:inherit;
+    text-decoration: none;
+    color: inherit;
 }
 
-ul{
-    list-style:none;
+
+ul {
+    list-style: none;
 }
 
-button{
-    border:none;
-    outline:none;
-    background:none;
-    cursor:pointer;
-    font-family:inherit;
+button {
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
 }
 
-input,
-textarea{
-    font-family:inherit;
-    outline:none;
+.container {
+    width: min(1280px,92%);
+    margin: auto;
 }
 
-section{
-    padding:120px 0;
+section {
+    padding: 120px 0;
+    position: relative;
 }
 
-.container{
-    width:min(1320px,90%);
-    margin:auto;
+::-webkit-scrollbar {
+    width: 10px;
 }
 
-/*======================================================
-                SELECTION
-======================================================*/
-
-::selection{
-    background:var(--primary);
-    color:var(--white);
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 20px;
 }
 
-/*======================================================
-                SCROLLBAR
-======================================================*/
-
-::-webkit-scrollbar{
-    width:10px;
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+    transition: .45s ease;
+    cursor: pointer;
 }
 
-::-webkit-scrollbar-track{
-    background:#ECE4DA;
+::-webkit-scrollbar-track {
+    width: 20px;
+    background: var(--text);
 }
 
-::-webkit-scrollbar-thumb{
-    background:linear-gradient(
-        to bottom,
-        #D8AE73,
-        #B88746
-    );
-    border-radius:100px;
+::selection {
+    background: var(--primary);
+    color: #fff;
 }
 
-::-webkit-scrollbar-thumb:hover{
-    background:#9B6B35;
-}
+/* Header */
 
-/*======================================================
-                    HEADER
-======================================================*/
-
-#header{
+#header {
     position: fixed;
-    top: 22px;
+    top: 25px;
     left: 0;
     width: 100%;
-    z-index: 1000;
-    transition: .45s cubic-bezier(.4,0,.2,1);
+    z-index: 10000;
 }
 
-/*======================================================
-                HEADER CONTAINER
-======================================================*/
+/* Header Container */
 
-.headerContainer{
-    width: min(1380px,94%);
-    height: 86px;
+.headerContainer {
+    width: min(1280px,92%);
+    height: 82px;
     margin: auto;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 0 30px;
+    align-items: center;
+    background: rgba(24,20,18,.55);
+    border: 1px solid rgba(255,255,255,0.8);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
     border-radius: 100px;
-    background: rgba(255,255,255,.14);
-    backdrop-filter: blur(22px);
-    -webkit-backdrop-filter: blur(22px);
-    border: 1px solid rgba(255,255,255,.28);
-    box-shadow:
-        0 12px 40px rgba(0,0,0,.08),
-        inset 0 1px 0 rgba(255,255,255,.35);
-    transition: var(--transition);
-}
-
-/*======================================================
-            HEADER SCROLL STATE
-======================================================*/
-
-#header.headerSticky{
-    top: 12px;
-}
-
-#header.headerSticky .headerContainer{
-    height: 74px;
-    background: rgba(255,255,255,.82);
-    backdrop-filter: blur(30px);
-    border-color: rgba(184,135,70,.12);
-    box-shadow:
-        0 18px 45px rgba(0,0,0,.12),
-        inset 0 1px 0 rgba(255,255,255,.55);
-}
-
-/*======================================================
-                HEADER HOVER
-======================================================*/
-
-.headerContainer:hover{
-    border-color: rgba(184,135,70,.18);
-    box-shadow:
-        0 20px 50px rgba(0,0,0,.10),
-        inset 0 1px 0 rgba(255,255,255,.45);
-}
-
-/*======================================================
-            GLASS SHINE
-======================================================*/
-
-.headerContainer::before{
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: linear-gradient(
-        120deg,
-        transparent 15%,
-        rgba(255,255,255,.18) 50%,
-        transparent 85%
-    );
-    opacity: .8;
-    pointer-events: none;
-}
-
-/*======================================================
-                    LOGO
-======================================================*/
-
-.headerLogo{
-    display:flex;
-    align-items:center;
-    gap:16px;
-    flex-shrink:0;
-}
-
-/*======================================================
-                LOGO ICON
-======================================================*/
-
-.logoIcon{
-    position:relative;
-    width:58px;
-    height:58px;
-    border-radius:50%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    overflow:hidden;
-    background:linear-gradient(
-        135deg,
-        #D9B27C,
-        #B88746,
-        #8C5A35
-    );
-    box-shadow:
-        0 12px 30px rgba(184,135,70,.35),
-        inset 0 1px 2px rgba(255,255,255,.35);
-    transition:var(--transition);
-}
-
-.logoIcon i{
-    font-size:2.3rem;
-    color:var(--white);
-    transition:var(--transition);
-}
-
-/*======================================================
-            SHINE EFFECT
-======================================================*/
-
-.logoIcon::before{
-    content:"";
-    position:absolute;
-    top:0;
-    left:-130%;
-    width:60%;
-    height:100%;
-    background:linear-gradient(
-        120deg,
-        transparent,
-        rgba(255,255,255,.7),
-        transparent
-    );
-    transform:skewX(-25deg);
-    transition:.8s ease;
-}
-
-/*======================================================
-                HOVER
-======================================================*/
-
-.headerLogo:hover .logoIcon{
-    transform:translateY(-3px) rotate(-8deg);
-}
-
-.headerLogo:hover .logoIcon::before{
-    left:170%;
-}
-
-.headerLogo:hover .logoIcon i{
-    transform:scale(1.1);
-}
-
-/*======================================================
-                TEXT
-======================================================*/
-
-.logoText{
-    display:flex;
-    flex-direction:column;
-}
-
-.logoText h2{
-    font-size:3rem;
-    font-weight:700;
-    line-height:1;
-    color:var(--secondary);
-    letter-spacing:-.5px;
-}
-
-.logoText span{
-    margin-top:6px;
-    font-size:1.05rem;
-    text-transform:uppercase;
-    letter-spacing:3px;
-    color:var(--text);
-}
-
-/*======================================================
-                    NAVIGATION
-======================================================*/
-
-.headerNavbar{
-    margin-left:auto;
-    margin-right:35px;
-}
-
-.navMenu{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.navMenu li{
-    position:relative;
-}
-
-/*======================================================
-                    NAV LINK
-======================================================*/
-
-.navMenu li a{
-    position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:12px 20px;
-    border-radius:50px;
-    font-size:1.5rem;
-    font-weight:500;
-    color:var(--secondary);
-    transition:
-        color .35s ease,
-        transform .35s ease;
-    z-index:2;
-}
-
-/*======================================================
-                GLASS CAPSULE
-======================================================*/
-
-.navMenu li a::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    border-radius:inherit;
-    background:rgba(255,255,255,.30);
-    backdrop-filter:blur(16px);
-    border:1px solid rgba(255,255,255,.25);
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.45),
-        0 8px 20px rgba(184,135,70,.10);
-    opacity:0;
-    transform:scale(.82);
-    transition:all .35s ease;
-    z-index:-1;
-}
-
-/*======================================================
-                HOVER
-======================================================*/
-
-.navMenu li a:hover{
-    color:var(--primary);
-    transform:translateY(-2px);
-}
-
-.navMenu li a:hover::before{
-    opacity:1;
-    transform:scale(1);
-}
-
-/*======================================================
-                ACTIVE LINK
-======================================================*/
-
-.navMenu li a.activeNav{
-    color:var(--primary);
-}
-
-.navMenu li a.activeNav::before{
-    opacity:1;
-    transform:scale(1);
-}
-
-/*======================================================
-                GOLD DOT
-======================================================*/
-
-.navMenu li a.activeNav::after{
-    content:"";
-    position:absolute;
-    bottom:-12px;
-    left:50%;
-    transform:translateX(-50%);
-    width:6px;
-    height:6px;
-    border-radius:50%;
-    background:var(--primary);
-    box-shadow:0 0 12px rgba(184,135,70,.45);
-}
-
-/*======================================================
-                    HEADER RIGHT
-======================================================*/
-
-.headerRight{
-    display:flex;
-    align-items:center;
-    gap:16px;
-}
-
-/*======================================================
-                    ICON BUTTON
-======================================================*/
-
-.headerIcon{
-    position:relative;
-    width:52px;
-    height:52px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    border-radius:50%;
-    cursor:pointer;
-    overflow:hidden;
-    color:var(--secondary);
-    background:rgba(255,255,255,.18);
-    backdrop-filter:blur(16px);
-    border:1px solid rgba(255,255,255,.25);
-    box-shadow:
-        inset 0 1px 1px rgba(255,255,255,.45),
-        0 10px 20px rgba(0,0,0,.08);
-    transition:var(--transition);
-}
-
-.headerIcon i{
-    font-size:1.8rem;
-    transition:var(--transition);
-}
-
-/*=====================================
-        ICON SHINE
-=====================================*/
-
-.headerIcon::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    border-radius:inherit;
-    background:linear-gradient(
-        135deg,
-        transparent,
-        rgba(255,255,255,.35),
-        transparent
-    );
-    transform:translateX(-130%);
-    transition:.8s;
-}
-
-.headerIcon:hover::before{
-    transform:translateX(130%);
-}
-
-/*=====================================
-        ICON HOVER
-=====================================*/
-
-.headerIcon:hover{
-    transform:translateY(-3px);
-    color:var(--primary);
-    border-color:rgba(184,135,70,.35);
-    box-shadow:
-        0 15px 35px rgba(184,135,70,.18);
-}
-.headerIcon:hover i{
-    transform:rotate(12deg) scale(1.1);
-}
-
-/*======================================================
-                RESERVE BUTTON
-======================================================*/
-
-.reserveBtn{
-    position:relative;
-    display:flex;
-    align-items:center;
-    gap:12px;
-    padding:15px 28px;
-    border-radius:60px;
-    overflow:hidden;
-    font-size:1.55rem;
-    font-weight:600;
-    color:var(--white);
-    background:linear-gradient(
-        135deg,
-        #DDB57D,
-        #B88746,
-        #8C5A35
-    );
-    box-shadow:
-        0 18px 35px rgba(184,135,70,.28);
-    transition:var(--transition);
-}
-
-/*=====================================
-            SHINE
-=====================================*/
-
-.reserveBtn::before{
-    content:"";
-    position:absolute;
-    top:0;
-    left:-120%;
-    width:60%;
-    height:100%;
-    background:linear-gradient(
-        120deg,
-        transparent,
-        rgba(255,255,255,.7),
-        transparent
-    );
-    transform:skewX(-25deg);
-    transition:.8s;
-}
-
-.reserveBtn:hover::before{
-    left:170%;
-}
-
-/*=====================================
-        BUTTON HOVER
-=====================================*/
-
-.reserveBtn:hover{
-    transform:translateY(-4px);
-    box-shadow:
-        0 22px 45px rgba(184,135,70,.35);
-}
-
-/*=====================================
-        ARROW
-=====================================*/
-
-.reserveBtn i{
-    transition:.35s;
-}
-
-.reserveBtn:hover i{
-    transform:translateX(7px);
-}
-
-
-/*======================================================
-                    MENU BUTTON
-======================================================*/
-
-.menuBtn{
-    display:none;
-    position:relative;
-    width:52px;
-    height:52px;
-    border-radius:50%;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    gap:6px;
-    background:rgba(255,255,255,.18);
-    backdrop-filter:blur(16px);
-    border:1px solid rgba(255,255,255,.25);
-    cursor:pointer;
-    transition:var(--transition);
-}
-
-.menuBtn span{
-    width:22px;
-    height:2px;
-    border-radius:100px;
-    background:var(--secondary);
-    transition:var(--transition);
-}
-
-.menuBtn:hover{
-    transform:translateY(-2px);
-}
-
-/*==========================
-        ACTIVE
-==========================*/
-
-.menuBtn.active span:nth-child(1){
-    transform:translateY(8px) rotate(45deg);
-}
-
-.menuBtn.active span:nth-child(2){
-    opacity:0;
-}
-
-.menuBtn.active span:nth-child(3){
-    transform:translateY(-8px) rotate(-45deg);
-}
-
-/*======================================================
-                MOBILE
-======================================================*/
-
-@media(max-width:992px){
-
-.headerNavbar{
-    position:fixed;
-    top:0;
-    right:-100%;
-    width:320px;
-    height:100vh;
-    padding:120px 35px;
-    background:rgba(255,255,255,.82);
-    backdrop-filter:blur(28px);
-    border-left:1px solid rgba(255,255,255,.25);
-    transition:.45s cubic-bezier(.4,0,.2,1);
-    z-index:999;
-}
-
-.headerNavbar.active{
-    right:0;
-}
-
-.navMenu{
-    flex-direction:column;
-    align-items:flex-start;
-    gap:24px;
-}
-
-.navMenu li{
-    width:100%;
-}
-
-.navMenu li a{
-    width:100%;
-    justify-content:flex-start;
-    font-size:1.8rem;
-    padding:16px 20px;
-}
-
-.headerRight{
-    display:none;
-}
-
-.menuBtn{
-    display:flex;
-}
-}
-
-/*=========================================
-                HERO
-=========================================*/
-
-#hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    background:
-        linear-gradient(
-        rgba(20,14,10,.72),
-        rgba(20,14,10,.78)
-    ),
-    url("../images/hero-bg.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-/*=========================================
-            OVERLAY
-=========================================*/
-
-.heroOverlay {
-    position: absolute;
-    inset: 0;
-    background:
-    radial-gradient(circle at top right,
-        rgba(184,135,70,.18),
-        transparent 40%),
-    radial-gradient(circle at bottom left,
-        rgba(255,255,255,.05),
-        transparent 45%);
-    z-index: 1;
-}
-
-/*=========================================
-        HERO CONTAINER
-=========================================*/
-
-.heroContainer {
-    position: relative;
-    z-index: 5;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1.05fr .95fr;
-    align-items: center;
-    gap: 80px;
-    padding-top: 140px;
-    padding-bottom: 80px;
-}
-
-/*=========================================
-            LEFT CONTENT
-=========================================*/
-
-.heroContent {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-/*=========================================
-            RIGHT CONTENT
-=========================================*/
-
-.heroImage {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/*=========================================
-        COFFEE IMAGE
-=========================================*/
-
-.coffeeWrapper {
-    position: relative;
-    width: min(520px,100%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.coffeeWrapper img {
-    width: 100%;
-    display: block;
-    object-fit: contain;
-    filter: drop-shadow(0 40px 80px rgba(0,0,0,.45));
-}
-
-/*=========================================
-        BACKGROUND GLOW
-=========================================*/
-
-.coffeeWrapper::before {
-    content: "";
-    position: absolute;
-    width: 420px;
-    height: 420px;
-    border-radius: 50%;
-    background:
-    radial-gradient(circle,
-    rgba(184,135,70,.30),
-    transparent 70%);
-    filter: blur(40px);
-    z-index: -1;
-}
-
-/*=========================================
-        DECORATION
-=========================================*/
-
-.heroDecoration {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 2;
-}
-
-.blur {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-}
-
-.blur1 {
-    width: 260px;
-    height: 260px;
-    background: rgba(184,135,70,.22);
-    top: 8%;
-    right: 8%;
-}
-
-.blur2 {
-    width: 220px;
-    height: 220px;
-    background: rgba(255,255,255,.8);
-    bottom: 8%;
-    left: 4%;
+    padding: 0 28px;
+    box-shadow: 0 15px 45px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.06);
 }
