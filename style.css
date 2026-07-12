@@ -1070,6 +1070,7 @@ box-shadow:
     align-items: center;
     justify-content: center;
     min-height: 780px;
+    isolation: isolate !important;
 }
 
 .heroGlow {
@@ -1084,6 +1085,7 @@ box-shadow:
     );
     filter: blur(35px);
     animation: glowMore 8s ease-in-out infinite;
+    transform: translateZ(-120px);
 }
 
 /* Rings */
@@ -1092,6 +1094,7 @@ box-shadow:
     position: absolute;
     border-radius: 50%;
     border: 1px solid rgba(255,255,255,.08);
+    transform: translateZ(-60px);
 }
 
 .ringOne {
@@ -1109,13 +1112,14 @@ box-shadow:
 
 .coffeeProduct {
     position: relative;
-    width: 36vw;
+    width: 360px;
     max-width: 600px;
     min-width: 480px;
     aspect-ratio: 1;
-    z-index: 10;
+    z-index: 20;
     animation: floatCoffee 5s ease-in-out infinite;
     overflow: hidden;
+    transform: translateZ(80px);
 }
 
 .coffeeProduct img {
@@ -1128,6 +1132,27 @@ box-shadow:
     user-select:none;
     -webkit-user-drag:none;
     pointer-events:none;
+    transition:
+    transform .7s ease,
+    filter .7s ease;
+}
+
+.heroVisual:hover{
+    transform: scale(1.02);
+    transition: .6s ease;
+}
+
+.heroVisual:hover .coffeeProduct img {
+    transform: scale(1.03);
+    filter:
+        brightness(1.05)
+        saturate(1.15)
+        drop-shadow(0 55px 90px rgba(0,0,0,.65)
+    );
+}
+
+.heroVisual:hover .goldShine{
+    animation-duration: 3s;
 }
 
 .glassReflection {
@@ -1233,28 +1258,60 @@ box-shadow:
 
 /* Floating Card */
 .floatingCard {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 18px 22px;
-    max-width: 180px;
-    border-radius: 22px;
-    background: rgba(255,255,255,.06);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    border: 1px solid rgba(255,255,255,.08);
-    box-sizing: 0 20px 45px rgba(0,0,0,.30), inset 0 1px 0 rgba(255,255,255,.08);
-    transition: var(--transition);
-    z-index: 20;
+    position:absolute;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:16px 20px;
+    min-width:180px;
+    background:rgba(255,255,255,.06);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:22px;
+    box-shadow:
+    0 20px 45px rgba(0,0,0,.35),
+    inset 0 1px rgba(255,255,255,.08);
+    transition:.45s ease;
+    overflow:hidden;
+    z-index: 30;
+}
+.floatingCard::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,.18),
+    transparent);
+
+    transform:translateX(-150%);
+
+    transition:.8s;
 }
 
-.floatingCard:hover {
-    transform: translateY(-10px) scale(1.04);
-    border-color: rgba(201,145,78,.35);
+.floatingCard:hover::before{
+
+    transform:translateX(150%);
+
+}
+
+.floatingCard:hover{
+
+    transform:
+    translateY(-8px)
+    scale(1.03);
+
+    border-color:rgba(200,138,77,.45);
+
     box-shadow:
-    0 30px 60px rgba(0,0,0,.45),
-    0 0 25px rgba(201,145,78,.25);
+    0 25px 60px rgba(0,0,0,.45),
+    0 0 35px rgba(200,138,77,.18);
+
 }
 
 .cardIcon {
@@ -1356,42 +1413,72 @@ box-shadow:
 /* Floating Card Position */
 
 .awardCard {
-    top: 8%;
-    left: -5%;
+    top:160px;
+    left:-50px;
+    animation:
+    floatCard 5s ease-in-out infinite;
 }
 
 .organicCard {
-    top: 22%;
-    right: -8%;
+    top:160px;
+    right:-50px;
+    animation:
+    floatCard 7s ease-in-out infinite;
 }
 
 .deliveryCard {
-    bottom: 28%;
-    right: -10%;
+    right:-20px;
+    bottom:210px;
+    animation:
+    floatCard 6s ease-in-out infinite;
 }
 
 .ratingCard {
-    top: 55%;
-    left: -5%;
+    left:10px;
+    bottom:170px;
+    animation:
+    floatCard 8s ease-in-out infinite;
 }
 
 .experienceCard {
-    bottom: 8%;
-    left: 8%;
+    left:70px;
+    bottom:20px;
+    animation:
+    floatCard 5.5s ease-in-out infinite;
 }
 
 .priceCard {
-    bottom: 6%;
-    right: 5%;
+    right:40px;
+    bottom:0px;
+    animation:
+    floatCard 6.5s ease-in-out infinite;
 }
 
 .liveCard {
-    top: 2%;
-    right: 20%;
+    top: 0;
+    /* left: -10%; */
     min-width: 220px;
     display: flex;
     align-items: center;
     gap: 12px;
+    animation:
+    floatCard 7.5s ease-in-out infinite;
+}
+
+@keyframes floatCard{
+
+    0%,100%{
+        transform:
+        translateY(0)
+        translateZ(50px);
+    }
+
+    50%{
+        transform:
+        translateY(-14px)
+        translateZ(50px);
+    }
+
 }
 
 .liveDot {
@@ -1578,20 +1665,77 @@ box-shadow:
     animation-delay:5s;
 }
 
+.p2,
+.p5{
+    width:5px;
+    height:5px;
+}
+
+.p3{
+    width:12px;
+    height:12px;
+}
+
+.p6{
+    width:6px;
+    height:6px;
+}
+
+.p2{
+    animation-delay:1s;
+}
+
+.p3{
+    animation-delay:2s;
+}
+
+.p4{
+    animation-delay:3s;
+}
+
+.p5{
+    animation-delay:1.5s;
+}
+
+.p6{
+    animation-delay:2.5s;
+}
+
 /* Glod Shine */
 
-.goldShine{
+/* .goldShine{
     position:absolute;
     inset:-40%;
+    z-index:18;
+    pointer-events:none;
     background:linear-gradient(
         120deg,
-        transparent 40%,
-        rgba(255,210,122,.10) 50%,
-        transparent 60%
+        transparent 0%,
+        transparent 42%,
+        rgba(255,255,255,.08) 47%,
+        rgba(255,230,170,.35) 50%,
+        rgba(255,255,255,.08) 53%,
+        transparent 58%,
+        transparent 100%
     );
-    transform:rotate(-20deg);
-    animation:shineMove 8s linear infinite;
-    pointer-events:none;
+    transform:rotate(-15deg)
+            translateX(-120%);
+    animation:goldSweep 8s linear infinite;
+} */
+
+@keyframes goldSweep{
+
+    from{
+        transform:
+        rotate(-15deg)
+        translateX(-120%);
+    }
+
+    to{
+        transform:
+        rotate(-15deg)
+        translateX(120%);
+    }
 }
 
 /* Glass Overlay */
@@ -1626,20 +1770,29 @@ box-shadow:
 @keyframes particleFloat{
 
     0%{
-        opacity:0;
         transform:
-        translateY(20px);
+        translateY(0)
+        scale(.8);
+        opacity:.2;
     }
 
-    50%{
+    30%{
         opacity:1;
     }
 
-    100%{
-        opacity:0;
+    50%{
         transform:
-        translateY(-50px);
+        translateY(-18px)
+        scale(1.15);
     }
+
+    100%{
+        transform:
+        translateY(-40px)
+        scale(.8);
+        opacity:0;
+    }
+
 }
 
 @keyframes shineMove{
@@ -1741,31 +1894,6 @@ box-shadow:
     }
 }
 
-/* RESPONSIVE TABLET */
-
-@media (max-width:1200px){
-
-.heroContainer{
-    grid-template-columns:1fr;
-    gap:80px;
-}
-
-.heroContent{
-    text-align:center;
-    margin:auto;
-}
-
-.heroButtons,
-.heroStats,
-.reviewBox{
-    justify-content:center;
-}
-
-.heroVisual{
-    min-height:650px;
-}
-}
-
 /* RESPONSIVE BASE */
 
 @media (max-width:768px){
@@ -1796,6 +1924,140 @@ box-shadow:
 
 }
 
+/* LARGE LAPTOP */
 
+@media (max-width:1400px){
+
+    .heroContainer{
+        gap:70px;
+    }
+
+    .heroTitle{
+        font-size:6.8rem;
+    }
+
+    .coffeeProduct{
+        width:380px;
+    }
+
+    .ringOne{
+        width:470px;
+        height:470px;
+    }
+
+    .ringTwo{
+        width:580px;
+        height:580px;
+    }
+
+}
+
+/* LAPTOP */
+
+@media (max-width:1200px){
+
+    .heroContainer{
+        gap:50px;
+    }
+
+    .heroTitle{
+        font-size:6rem;
+    }
+
+    .heroDescription{
+        font-size:1.7rem;
+    }
+
+    .coffeeProduct{
+        width:340px;
+    }
+
+}
+
+/* Tablet */
+
+@media (max-width:992px){
+
+    .heroContainer{
+        grid-template-columns:1fr;
+        text-align:center;
+        gap:80px;
+    }
+
+    .heroContent{
+        order:2;
+    }
+
+    .heroVisual{
+        order:1;
+        min-height:600px;
+    }
+
+}
+
+@media (max-width:992px){
+    .heroBadge,
+    .heroButtons,
+    .reviewBox,
+    .heroStats{
+        justify-content:center;
+        margin-inline:auto;
+    }
+}
+
+/*==================================
+        768px
+==================================*/
+
+@media (max-width:768px){
+    #hero{
+        padding:150px 0 80px;
+    }
+    .heroTitle{
+        font-size:5rem;
+    }
+    .heroDescription{
+        font-size:1.6rem;
+    }
+    .heroButtons{
+        flex-direction:column;
+        align-items:center;
+    }
+    .heroStats{
+        grid-template-columns:1fr;
+    }
+}
+
+/*==================================
+        576px
+==================================*/
+
+@media (max-width:576px){
+    .heroTitle{
+        font-size:4.2rem;
+        letter-spacing:0;
+    }
+    .coffeeProduct{
+        width:280px;
+    }
+    .ringOne{
+        width:340px;
+        height:340px;
+    }
+    .ringTwo{
+        width:420px;
+        height:420px;
+    }
+}
+
+@media (max-width:576px){
+    .goldShine,
+    .beanFive,
+    .beanSix,
+    .p5,
+    .p6{
+        display:none;
+    }
+}
 
 /** Hero Section End  */
